@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TournamentLibrary
 {
+    /// <summary>
+    /// Represents one team in a matchup
+    /// </summary>
     public class MatchupEntryModel
     {
         /// <summary>
