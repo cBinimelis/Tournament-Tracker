@@ -8,9 +8,9 @@ namespace TournamentLibrary
 {
     public class PersonModel
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EmailAddress { get; set; }
-        public string CellhoneNumber { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Correo { get; set; }
+        public string NumTelefono { get; set; }
     }
 }

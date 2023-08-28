@@ -17,7 +17,7 @@ namespace TournamentLibrary
         public TeamModel TeamCompeting { get; set; }
 
         /// <summary>
-        /// Represents the score for this particula team
+        /// Represents the score for this particular team
         /// </summary>
         public double Score { get; set; }
 

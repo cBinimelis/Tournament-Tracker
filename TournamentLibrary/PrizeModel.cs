@@ -12,6 +12,10 @@ namespace TournamentLibrary
     public class PrizeModel
     {
         /// <summary>
+        /// Unique identifier for the Prize
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// The place number of the winner team
         /// </summary>
         public int PlaceNumber { get; set; }
