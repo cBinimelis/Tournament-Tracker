@@ -58,7 +58,7 @@
             tb_positionNumber.Location = new Point(326, 125);
             tb_positionNumber.Name = "tb_positionNumber";
             tb_positionNumber.Size = new Size(366, 35);
-            tb_positionNumber.TabIndex = 16;
+            tb_positionNumber.TabIndex = 1;
             // 
             // lbl_tournamentName
             // 
@@ -86,7 +86,7 @@
             tb_positionName.Location = new Point(326, 183);
             tb_positionName.Name = "tb_positionName";
             tb_positionName.Size = new Size(366, 35);
-            tb_positionName.TabIndex = 16;
+            tb_positionName.TabIndex = 2;
             // 
             // label3
             // 
@@ -104,7 +104,8 @@
             tb_prizeAmount.Location = new Point(326, 241);
             tb_prizeAmount.Name = "tb_prizeAmount";
             tb_prizeAmount.Size = new Size(366, 35);
-            tb_prizeAmount.TabIndex = 16;
+            tb_prizeAmount.TabIndex = 3;
+            tb_prizeAmount.Text = "0";
             // 
             // label4
             // 
@@ -122,7 +123,8 @@
             tb_prizePercentage.Location = new Point(326, 312);
             tb_prizePercentage.Name = "tb_prizePercentage";
             tb_prizePercentage.Size = new Size(366, 35);
-            tb_prizePercentage.TabIndex = 16;
+            tb_prizePercentage.TabIndex = 4;
+            tb_prizePercentage.Text = "0";
             // 
             // label_or
             // 
@@ -147,9 +149,10 @@
             btn_createPrize.Margin = new Padding(0);
             btn_createPrize.Name = "btn_createPrize";
             btn_createPrize.Size = new Size(366, 55);
-            btn_createPrize.TabIndex = 20;
+            btn_createPrize.TabIndex = 5;
             btn_createPrize.Text = "Crear Premio";
             btn_createPrize.UseVisualStyleBackColor = false;
+            btn_createPrize.Click += btn_createPrize_Click;
             // 
             // CreatePrizeForm
             // 

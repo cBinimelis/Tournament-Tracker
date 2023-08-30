@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TournamentLibrary.Models;
 
-namespace TournamentLibrary
+namespace TournamentLibrary.DataAccess
 {
-    public class SqlConnector : IDataConnection
+    public class TextConnector : IDataConnection
     {
-        // TODO - Hacer que el metodo CreatePrize realmente guarde informacion a la base de datos
+        // TODO - Hacer que el metodo CreatePrize (Texto) realmente guarde informacion a la base de datos
         /// <summary>
         /// Guarda un nuevo precio a la base de datos
         /// </summary>

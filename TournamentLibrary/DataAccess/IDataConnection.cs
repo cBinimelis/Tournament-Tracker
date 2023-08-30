@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TournamentLibrary.Models;
 
-namespace TournamentLibrary
+namespace TournamentLibrary.DataAccess
 {
     public interface IDataConnection
     {

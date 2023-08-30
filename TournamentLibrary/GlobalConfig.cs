@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using TournamentLibrary.DataAccess;
 
 namespace TournamentLibrary
 {
@@ -13,21 +15,32 @@ namespace TournamentLibrary
     /// </summary>
     public static class GlobalConfig
     {
+
         // Se deja el método como privado para prevenir que sea modificado desde fuera del actual documento
-        public static List<IDataConnection> Connections { get; private set; }
+        public static IDataConnection Connections { get; private set; }
+
 
         // Metodo utilizado para revisar que tipo de base de datos se utilizará o si se utilizarán todos los disponibles
-        public static void InitializeConnections(bool database, bool textfiles)
+        public static void InitializeConnections(string connectionType)
         {
-            if (database)
+            if (connectionType == "sql")
             {
                 // TODO - Crer una conexión para SQL
-            }
+                SqlConnector sql = new SqlConnector();
+                Connections = sql;
 
-            if (textfiles)
+            }
+            else if (connectionType == "text")
             {
                 // TODO - Crear una conexión para texto
+                TextConnector text = new TextConnector();
+                Connections = text;
             }
+        }
+
+        public static string CnnString (string name)
+        {
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }
 }
