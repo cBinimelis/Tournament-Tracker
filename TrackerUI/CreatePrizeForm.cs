@@ -30,10 +30,7 @@ namespace TrackerUI
                     tb_prizeAmount.Text,
                     tb_prizePercentage.Text);
 
-                foreach (IDataConnection db in GlobalConfig.Connections)
-                {
-                    db.CreatePrize(model);
-                }
+               GlobalConfig.Connection.CreatePrize(model);
 
                 tb_positionName.Text = "";
                 tb_positionNumber.Text = "";

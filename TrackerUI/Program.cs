@@ -1,3 +1,5 @@
+using TournamentLibrary;
+
 namespace TrackerUI
 {
     internal static class Program
@@ -13,7 +15,7 @@ namespace TrackerUI
             ApplicationConfiguration.Initialize();
             
             //Inicializaciónm de las conecciones de bdd; SQL || Texto
-            TournamentLibrary.GlobalConfig.InitializeConnections(true, true);
+            TournamentLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
             Application.Run(new CreatePrizeForm());
             //Application.Run(new TournamentDashboardForm());
         }

@@ -17,24 +17,24 @@ namespace TournamentLibrary
     {
 
         // Se deja el método como privado para prevenir que sea modificado desde fuera del actual documento
-        public static IDataConnection Connections { get; private set; }
+        public static IDataConnection Connection { get; private set; }
 
 
         // Metodo utilizado para revisar que tipo de base de datos se utilizará o si se utilizarán todos los disponibles
-        public static void InitializeConnections(string connectionType)
+        public static void InitializeConnections(DatabaseType db)
         {
-            if (connectionType == "sql")
+            if (db == DatabaseType.Sql)
             {
                 // TODO - Crer una conexión para SQL
                 SqlConnector sql = new SqlConnector();
-                Connections = sql;
+                Connection = sql;
 
             }
-            else if (connectionType == "text")
+            else if (db == DatabaseType.TextFile)
             {
                 // TODO - Crear una conexión para texto
                 TextConnector text = new TextConnector();
-                Connections = text;
+                Connection = text;
             }
         }
 

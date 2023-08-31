@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +17,7 @@ namespace TournamentLibrary.DataAccess
         /// <returns>La  información del producto, incluído el identificador único</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            model.Id = 1;
-            return model;
+
         }
     }
 }
