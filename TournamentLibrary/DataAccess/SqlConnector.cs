@@ -11,6 +11,26 @@ namespace TournamentLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
     {
+        public PersonModel CreatePerson(PersonModel model)
+        {
+            using(IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Nombre", model.Nombre);
+                p.Add("@Apellido", model.Apellido);
+                p.Add("@Correo", model.Correo);
+                p.Add("@NumTelefono", model.NumTelefono);
+                p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                conn.Execute("dbo.spPerson_Insert", p,commandType: CommandType.StoredProcedure);
+
+                model.Id = p.Get<int>("@Id");
+
+                return model;
+
+            }
+        }
+
         // TODO - Hacer que el metodo CreatePrize realmente guarde informacion a la base de datos
         /// <summary>
         /// Guarda un nuevo premio a la base de datos.

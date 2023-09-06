@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TournamentLibrary.Models;
 
-namespace TournamentLibrary.DataAccess.TextConnector
+namespace TournamentLibrary.DataAccess.TextHelpers
 {
     public static class TextConnectorProcessor
     {
-        public static string FullFilePath(string filename)
+        public static string FullFilePath(this string filename)
         {
-            return $"{ConfigurationManager.AppSettings["filepath"]}\\{ filename }";
+            return $"{ConfigurationManager.AppSettings["filepath"]}\\{filename}";
         }
 
         public static List<string> LoadFile(this string file)
@@ -23,7 +23,7 @@ namespace TournamentLibrary.DataAccess.TextConnector
                 return new List<string>();
             }
 
-            return File.ReadAllLines(file).ToList() ;
+            return File.ReadAllLines(file).ToList();
         }
 
         public static List<PrizeModel> ConvertToPrizeModels(this List<string> lines)
@@ -39,7 +39,48 @@ namespace TournamentLibrary.DataAccess.TextConnector
                 p.PlaceName = cols[2];
                 p.PriceAmount = decimal.Parse(cols[3]);
                 p.PricePercentage = double.Parse(cols[4]);
+                output.Add(p);
             }
+            return output;
+        }
+
+        public static void SaveToPrizeFile(this List<PrizeModel> models, string filename)
+        {
+            List<string> lines = new List<string>();
+            foreach (PrizeModel p in models)
+            {
+                lines.Add($"{ p.Id },{ p.PlaceNumber},{ p.PlaceName },{ p.PriceAmount },{ p.PricePercentage }");
+            }
+            File.WriteAllLines(filename.FullFilePath(), lines);
+        }
+
+
+        public static List<PersonModel> ConvertToPersonModels(this List<string> lines)
+        {
+            List<PersonModel> output = new List<PersonModel>();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+                PersonModel p = new PersonModel();
+                p.Id = int.Parse(cols[0]);
+                p.Nombre = cols[1];
+                p.Apellido = cols[2];
+                p.Correo = cols[3];
+                p.NumTelefono = cols[4];
+                output.Add(p);
+            }
+            return output;
+        }
+
+        public static void SaveToPersonFile(this List<PersonModel> models, string filename)
+        {
+            List<string> lines = new List<string>();
+            foreach (PersonModel p in models)
+            {
+                lines.Add($"{p.Id},{p.Nombre},{p.Apellido},{p.Correo},{p.NumTelefono}");
+            }
+            File.WriteAllLines(filename.FullFilePath(), lines);
         }
     }
 }

@@ -14,9 +14,9 @@ namespace TrackerUI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             
-            //Inicializaciónm de las conecciones de bdd; SQL || Texto
-            TournamentLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
-            Application.Run(new CreatePrizeForm());
+            //Inicializaciónm de las conexiones de bdd; SQL || Texto
+            TournamentLibrary.GlobalConfig.InitializeConnections(DatabaseType.TextFile);
+            Application.Run(new CreateTeamForm());
             //Application.Run(new TournamentDashboardForm());
         }
     }

@@ -57,7 +57,7 @@
             tb_teamName.Location = new Point(12, 102);
             tb_teamName.Name = "tb_teamName";
             tb_teamName.Size = new Size(366, 35);
-            tb_teamName.TabIndex = 14;
+            tb_teamName.TabIndex = 1;
             // 
             // lbl_tournamentName
             // 
@@ -92,7 +92,7 @@
             btn_addMember.Margin = new Padding(1);
             btn_addMember.Name = "btn_addMember";
             btn_addMember.Size = new Size(366, 41);
-            btn_addMember.TabIndex = 19;
+            btn_addMember.TabIndex = 3;
             btn_addMember.Text = "Añadir Jugador";
             btn_addMember.UseVisualStyleBackColor = false;
             // 
@@ -103,7 +103,7 @@
             dd_selectMember.Location = new Point(12, 173);
             dd_selectMember.Name = "dd_selectMember";
             dd_selectMember.Size = new Size(366, 38);
-            dd_selectMember.TabIndex = 17;
+            dd_selectMember.TabIndex = 2;
             // 
             // label3
             // 
@@ -130,7 +130,7 @@
             groupBox1.Location = new Point(12, 269);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(366, 222);
-            groupBox1.TabIndex = 20;
+            groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Crear Jugador";
             // 
@@ -140,7 +140,7 @@
             tb_telefonoJugador.Location = new Point(117, 140);
             tb_telefonoJugador.Name = "tb_telefonoJugador";
             tb_telefonoJugador.Size = new Size(243, 29);
-            tb_telefonoJugador.TabIndex = 10;
+            tb_telefonoJugador.TabIndex = 7;
             // 
             // btn_createMember
             // 
@@ -155,9 +155,10 @@
             btn_createMember.Margin = new Padding(1);
             btn_createMember.Name = "btn_createMember";
             btn_createMember.Size = new Size(193, 41);
-            btn_createMember.TabIndex = 19;
+            btn_createMember.TabIndex = 8;
             btn_createMember.Text = "Crear";
             btn_createMember.UseVisualStyleBackColor = false;
+            btn_createMember.Click += btn_createMember_Click;
             // 
             // tb_apellidoJugador
             // 
@@ -165,7 +166,7 @@
             tb_apellidoJugador.Location = new Point(117, 70);
             tb_apellidoJugador.Name = "tb_apellidoJugador";
             tb_apellidoJugador.Size = new Size(243, 29);
-            tb_apellidoJugador.TabIndex = 10;
+            tb_apellidoJugador.TabIndex = 5;
             // 
             // tb_correoJugador
             // 
@@ -173,7 +174,7 @@
             tb_correoJugador.Location = new Point(117, 105);
             tb_correoJugador.Name = "tb_correoJugador";
             tb_correoJugador.Size = new Size(243, 29);
-            tb_correoJugador.TabIndex = 10;
+            tb_correoJugador.TabIndex = 6;
             // 
             // label6
             // 
@@ -191,7 +192,7 @@
             tb_nombreJugador.Location = new Point(117, 35);
             tb_nombreJugador.Name = "tb_nombreJugador";
             tb_nombreJugador.Size = new Size(243, 29);
-            tb_nombreJugador.TabIndex = 10;
+            tb_nombreJugador.TabIndex = 4;
             // 
             // label4
             // 
@@ -231,7 +232,7 @@
             lb_tournamentPlayers.Location = new Point(397, 102);
             lb_tournamentPlayers.Name = "lb_tournamentPlayers";
             lb_tournamentPlayers.Size = new Size(365, 274);
-            lb_tournamentPlayers.TabIndex = 21;
+            lb_tournamentPlayers.TabIndex = 9;
             // 
             // btn_deleteSelected
             // 
@@ -246,7 +247,7 @@
             btn_deleteSelected.Margin = new Padding(1);
             btn_deleteSelected.Name = "btn_deleteSelected";
             btn_deleteSelected.Size = new Size(366, 41);
-            btn_deleteSelected.TabIndex = 19;
+            btn_deleteSelected.TabIndex = 10;
             btn_deleteSelected.Text = "Eliminar Seleccionado";
             btn_deleteSelected.UseVisualStyleBackColor = false;
             // 
@@ -263,7 +264,7 @@
             btn_crearEquipo.Margin = new Padding(0);
             btn_crearEquipo.Name = "btn_crearEquipo";
             btn_crearEquipo.Size = new Size(366, 55);
-            btn_crearEquipo.TabIndex = 19;
+            btn_crearEquipo.TabIndex = 11;
             btn_crearEquipo.Text = "Crear Equipo";
             btn_crearEquipo.UseVisualStyleBackColor = false;
             // 
