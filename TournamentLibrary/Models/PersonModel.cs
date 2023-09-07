@@ -16,5 +16,13 @@ namespace TournamentLibrary.Models
         public string Apellido { get; set; }
         public string Correo { get; set; }
         public string NumTelefono { get; set; }
+
+        public string nombreCompleto
+        {
+            get
+            {
+                return $"{ Nombre } { Apellido }";
+            }
+        }
     }
 }

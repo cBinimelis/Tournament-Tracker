@@ -11,9 +11,10 @@ namespace TournamentLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
     {
+        private const string db = "Tournaments";
         public PersonModel CreatePerson(PersonModel model)
         {
-            using(IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            using(IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 var p = new DynamicParameters();
                 p.Add("@Nombre", model.Nombre);
@@ -41,7 +42,7 @@ namespace TournamentLibrary.DataAccess
         /// <returns>La  información del premio, incluído el identificador único del nuevo elemento creado</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 var p = new DynamicParameters();
                 p.Add("@PlaceNumber", model.PlaceNumber);
@@ -56,6 +57,16 @@ namespace TournamentLibrary.DataAccess
 
                 return model;
             }
+        }
+
+        public List<PersonModel> GetPersons_All()
+        {
+            List<PersonModel> output;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<PersonModel>("db.spPeople_GetAll").ToList();
+            }
+            return output;
         }
     }
 }

@@ -11,5 +11,6 @@ namespace TournamentLibrary.DataAccess
     {
         PrizeModel CreatePrize(PrizeModel model);
         PersonModel CreatePerson(PersonModel model);
+        List<PersonModel> GetPersons_All();
     }
 }

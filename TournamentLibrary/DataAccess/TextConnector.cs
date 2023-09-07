@@ -48,5 +48,10 @@ namespace TournamentLibrary.DataAccess
 
             return model;
         }
+
+        public List<PersonModel> GetPersons_All()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
