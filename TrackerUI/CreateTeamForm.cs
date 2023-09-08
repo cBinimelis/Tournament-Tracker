@@ -20,7 +20,7 @@ namespace TrackerUI
         public CreateTeamForm()
         {
             InitializeComponent();
-            CreateSampleData();
+            //CreateSampleData();
             WireUpLists();
         }
 
@@ -33,14 +33,20 @@ namespace TrackerUI
             selectedTeamMembers.Add((new PersonModel { Nombre = "Bill", Apellido = "Jones" }));
         }
 
+
+        //Se actualizan el listado de personas en el DropDown y en el ListBox
         private void WireUpLists()
         {
+            dd_selectMember.DataSource = null;
             dd_selectMember.DataSource = availableTeamMembers;
             dd_selectMember.DisplayMember = "nombreCompleto";
 
+            lb_tournamentPlayers.DataSource = null;
             lb_tournamentPlayers.DataSource = selectedTeamMembers;
             lb_tournamentPlayers.DisplayMember = "nombreCompleto";
         }
+
+
         private void btn_createMember_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
@@ -52,7 +58,11 @@ namespace TrackerUI
                 person.Correo = tb_correoJugador.Text.Trim();
                 person.NumTelefono = tb_telefonoJugador.Text.Trim();
 
-                GlobalConfig.Connection.CreatePerson(person);
+                person=GlobalConfig.Connection.CreatePerson(person);
+
+                selectedTeamMembers.Add(person);
+
+                WireUpLists();
 
                 tb_nombreJugador.Text = "";
                 tb_apellidoJugador.Text = "";
@@ -91,6 +101,40 @@ namespace TrackerUI
             }
 
             return output;
+        }
+
+        private void btn_addMember_Click(object sender, EventArgs e)
+        {
+            PersonModel p = (PersonModel)dd_selectMember.SelectedItem;
+
+            if (p == null)
+            {
+                MessageBox.Show("Debes seleccionar a alguien para quitar de la lista");
+            }
+            else
+            {
+                availableTeamMembers.Remove(p);
+                selectedTeamMembers.Add(p);
+
+                WireUpLists();
+            }
+        }
+
+        private void btn_removeSelected_Click(object sender, EventArgs e)
+        {
+            PersonModel p = (PersonModel)lb_tournamentPlayers.SelectedItem;
+
+            if (p == null)
+            {
+                MessageBox.Show("Debes seleccionar a alguien para quitar de la lista");
+            }
+            else
+            {
+                selectedTeamMembers.Remove(p);
+                availableTeamMembers.Add(p);
+
+                WireUpLists();
+            }
         }
     }
 }

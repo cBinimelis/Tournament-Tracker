@@ -64,7 +64,7 @@ namespace TournamentLibrary.DataAccess
             List<PersonModel> output;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                output = connection.Query<PersonModel>("db.spPeople_GetAll").ToList();
+                output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
             }
             return output;
         }

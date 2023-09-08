@@ -46,7 +46,7 @@
             label2 = new Label();
             label5 = new Label();
             lb_tournamentPlayers = new ListBox();
-            btn_deleteSelected = new Button();
+            btn_removeSelected = new Button();
             btn_crearEquipo = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -95,9 +95,11 @@
             btn_addMember.TabIndex = 3;
             btn_addMember.Text = "Añadir Jugador";
             btn_addMember.UseVisualStyleBackColor = false;
+            btn_addMember.Click += btn_addMember_Click;
             // 
             // dd_selectMember
             // 
+            dd_selectMember.DropDownStyle = ComboBoxStyle.DropDownList;
             dd_selectMember.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             dd_selectMember.FormattingEnabled = true;
             dd_selectMember.Location = new Point(12, 173);
@@ -234,22 +236,23 @@
             lb_tournamentPlayers.Size = new Size(365, 274);
             lb_tournamentPlayers.TabIndex = 9;
             // 
-            // btn_deleteSelected
+            // btn_removeSelected
             // 
-            btn_deleteSelected.BackColor = Color.IndianRed;
-            btn_deleteSelected.FlatAppearance.BorderColor = Color.Firebrick;
-            btn_deleteSelected.FlatAppearance.MouseDownBackColor = Color.Brown;
-            btn_deleteSelected.FlatAppearance.MouseOverBackColor = Color.LightCoral;
-            btn_deleteSelected.FlatStyle = FlatStyle.Flat;
-            btn_deleteSelected.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_deleteSelected.ForeColor = Color.White;
-            btn_deleteSelected.Location = new Point(396, 385);
-            btn_deleteSelected.Margin = new Padding(1);
-            btn_deleteSelected.Name = "btn_deleteSelected";
-            btn_deleteSelected.Size = new Size(366, 41);
-            btn_deleteSelected.TabIndex = 10;
-            btn_deleteSelected.Text = "Eliminar Seleccionado";
-            btn_deleteSelected.UseVisualStyleBackColor = false;
+            btn_removeSelected.BackColor = Color.IndianRed;
+            btn_removeSelected.FlatAppearance.BorderColor = Color.Firebrick;
+            btn_removeSelected.FlatAppearance.MouseDownBackColor = Color.Brown;
+            btn_removeSelected.FlatAppearance.MouseOverBackColor = Color.LightCoral;
+            btn_removeSelected.FlatStyle = FlatStyle.Flat;
+            btn_removeSelected.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_removeSelected.ForeColor = Color.White;
+            btn_removeSelected.Location = new Point(396, 385);
+            btn_removeSelected.Margin = new Padding(1);
+            btn_removeSelected.Name = "btn_removeSelected";
+            btn_removeSelected.Size = new Size(366, 41);
+            btn_removeSelected.TabIndex = 10;
+            btn_removeSelected.Text = "Quitar Seleccionado";
+            btn_removeSelected.UseVisualStyleBackColor = false;
+            btn_removeSelected.Click += btn_removeSelected_Click;
             // 
             // btn_crearEquipo
             // 
@@ -277,7 +280,7 @@
             Controls.Add(lb_tournamentPlayers);
             Controls.Add(groupBox1);
             Controls.Add(btn_crearEquipo);
-            Controls.Add(btn_deleteSelected);
+            Controls.Add(btn_removeSelected);
             Controls.Add(btn_addMember);
             Controls.Add(dd_selectMember);
             Controls.Add(label3);
@@ -317,7 +320,7 @@
         private Label label5;
         private Button btn_createMember;
         private ListBox lb_tournamentPlayers;
-        private Button btn_deleteSelected;
+        private Button btn_removeSelected;
         private Button btn_crearEquipo;
     }
 }
