@@ -270,6 +270,7 @@
             btn_crearEquipo.TabIndex = 11;
             btn_crearEquipo.Text = "Crear Equipo";
             btn_crearEquipo.UseVisualStyleBackColor = false;
+            btn_crearEquipo.Click += btn_crearEquipo_Click;
             // 
             // CreateTeamForm
             // 

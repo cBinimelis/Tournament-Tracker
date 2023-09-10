@@ -58,7 +58,7 @@ namespace TrackerUI
                 person.Correo = tb_correoJugador.Text.Trim();
                 person.NumTelefono = tb_telefonoJugador.Text.Trim();
 
-                person=GlobalConfig.Connection.CreatePerson(person);
+                person = GlobalConfig.Connection.CreatePerson(person);
 
                 selectedTeamMembers.Add(person);
 
@@ -135,6 +135,11 @@ namespace TrackerUI
 
                 WireUpLists();
             }
+        }
+
+        private void btn_crearEquipo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
