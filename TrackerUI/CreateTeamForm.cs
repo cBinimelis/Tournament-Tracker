@@ -139,7 +139,14 @@ namespace TrackerUI
 
         private void btn_crearEquipo_Click(object sender, EventArgs e)
         {
+            TeamModel t = new TeamModel();
 
+            t.TeamName = tb_teamName.Text;
+            t.TeamMemebers = selectedTeamMembers;
+
+            t = GlobalConfig.Connection.CreateTeam(t);
+
+            //TODO - Si no se cerrará este formulario después de la creacion, resetear el formulario
         }
     }
 }

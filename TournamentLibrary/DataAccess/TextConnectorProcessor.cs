@@ -49,7 +49,7 @@ namespace TournamentLibrary.DataAccess.TextHelpers
             List<string> lines = new List<string>();
             foreach (PrizeModel p in models)
             {
-                lines.Add($"{ p.Id },{ p.PlaceNumber},{ p.PlaceName },{ p.PriceAmount },{ p.PricePercentage }");
+                lines.Add($"{p.Id},{p.PlaceNumber},{p.PlaceName},{p.PriceAmount},{p.PricePercentage}");
             }
             File.WriteAllLines(filename.FullFilePath(), lines);
         }
@@ -81,6 +81,57 @@ namespace TournamentLibrary.DataAccess.TextHelpers
                 lines.Add($"{p.Id},{p.Nombre},{p.Apellido},{p.Correo},{p.NumTelefono}");
             }
             File.WriteAllLines(filename.FullFilePath(), lines);
+        }
+
+        public static List<TeamModel> ConvertToTeamModels(this List<string> lines, string peopleFileName)
+        {
+            List<TeamModel> output = new List<TeamModel>();
+            List<PersonModel> person = peopleFileName.FullFilePath().LoadFile().ConvertToPersonModels();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+                TeamModel t = new TeamModel();
+                t.Id = int.Parse(cols[0]);
+                t.TeamName = cols[1];
+
+                string[] personId = cols[2].Split('|');
+
+                foreach (string id in personId)
+                {
+                    t.TeamMemebers.Add(person.Where(x => x.Id == int.Parse(id)).First());
+                }
+            }
+
+            return output;
+        }
+
+        public static void SaveToTeamFile(this List<TeamModel> models, string filename)
+        {
+            List<string> lines = new List<string>();
+            foreach (TeamModel t in models)
+            {
+                lines.Add($"{t.Id},{t.TeamName},{ConvertPeopleListToString(t.TeamMemebers)}");
+                
+            }
+
+            File.WriteAllLines (filename.FullFilePath(), lines);
+        }
+
+        private static string ConvertPeopleListToString(List<PersonModel> people)
+        {
+            string output = "";
+
+            if (people.Count == 0) return "";
+
+            foreach (PersonModel p in people)
+            {
+                output += $"{ p.Id }|";
+            }
+
+            output= output.Substring(0,output.Length-1);
+
+            return output;
         }
     }
 }

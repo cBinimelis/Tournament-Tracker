@@ -14,7 +14,7 @@ namespace TournamentLibrary.DataAccess
         private const string db = "Tournaments";
         public PersonModel CreatePerson(PersonModel model)
         {
-            using(IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 var p = new DynamicParameters();
                 p.Add("@Nombre", model.Nombre);
@@ -23,7 +23,7 @@ namespace TournamentLibrary.DataAccess
                 p.Add("@NumTelefono", model.NumTelefono);
                 p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                conn.Execute("dbo.spPerson_Insert", p,commandType: CommandType.StoredProcedure);
+                conn.Execute("dbo.spPerson_Insert", p, commandType: CommandType.StoredProcedure);
 
                 model.Id = p.Get<int>("@Id");
 
@@ -49,11 +49,36 @@ namespace TournamentLibrary.DataAccess
                 p.Add("@PlaceName", model.PlaceName);
                 p.Add("@PrizeAmount", model.PriceAmount);
                 p.Add("@PrizePercentage", model.PricePercentage);
-                p.Add("@id",0,dbType: DbType.Int32, direction: ParameterDirection.Output);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 conn.Execute("dbo.spPrizes_Insert", p, commandType: CommandType.StoredProcedure);
 
                 model.Id = p.Get<int>("@id");
+
+                return model;
+            }
+        }
+
+        public TeamModel CreateTeam(TeamModel model)
+        {
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var t = new DynamicParameters();
+                t.Add("@TeamName", model.TeamName);
+                t.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                conn.Execute("dbo.spTeams_Insert", t, commandType: CommandType.StoredProcedure);
+
+                model.Id = t.Get<int>("@Id");
+
+                foreach (PersonModel tm in model.TeamMemebers)
+                {
+                    t = new DynamicParameters();
+                    t.Add("@TeamId", model.Id);
+                    t.Add("@PersonId", tm.Id);
+
+                    conn.Execute("dbo.spTeamMembers_Insert", t, commandType: CommandType.StoredProcedure);
+                }
 
                 return model;
             }
