@@ -202,9 +202,9 @@
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(400, 262);
             label5.Name = "label5";
-            label5.Size = new Size(67, 30);
+            label5.Size = new Size(87, 30);
             label5.TabIndex = 12;
-            label5.Text = "Prizes";
+            label5.Text = "Premios";
             // 
             // btn_deletePrize
             // 
