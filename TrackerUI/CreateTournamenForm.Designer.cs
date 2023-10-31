@@ -40,7 +40,7 @@
             btn_addTeam = new Button();
             btn_addPrize = new Button();
             label4 = new Label();
-            lb_tournamentPlayers = new ListBox();
+            lb_tournamentTeam = new ListBox();
             btn_deletePlayer = new Button();
             label5 = new Label();
             btn_deletePrize = new Button();
@@ -125,6 +125,7 @@
             linkLabel1.TabIndex = 15;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "CREAR";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // btn_addTeam
             // 
@@ -142,6 +143,7 @@
             btn_addTeam.TabIndex = 16;
             btn_addTeam.Text = "Añadir Equipo";
             btn_addTeam.UseVisualStyleBackColor = false;
+            btn_addTeam.Click += btn_addTeam_Click;
             // 
             // btn_addPrize
             // 
@@ -159,6 +161,7 @@
             btn_addPrize.TabIndex = 16;
             btn_addPrize.Text = "Crear Premio";
             btn_addPrize.UseVisualStyleBackColor = false;
+            btn_addPrize.Click += btn_addPrize_Click;
             // 
             // label4
             // 
@@ -170,15 +173,15 @@
             label4.TabIndex = 12;
             label4.Text = "Equipos / Jugadores";
             // 
-            // lb_tournamentPlayers
+            // lb_tournamentTeam
             // 
-            lb_tournamentPlayers.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            lb_tournamentPlayers.FormattingEnabled = true;
-            lb_tournamentPlayers.ItemHeight = 30;
-            lb_tournamentPlayers.Location = new Point(400, 42);
-            lb_tournamentPlayers.Name = "lb_tournamentPlayers";
-            lb_tournamentPlayers.Size = new Size(365, 154);
-            lb_tournamentPlayers.TabIndex = 17;
+            lb_tournamentTeam.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            lb_tournamentTeam.FormattingEnabled = true;
+            lb_tournamentTeam.ItemHeight = 30;
+            lb_tournamentTeam.Location = new Point(400, 42);
+            lb_tournamentTeam.Name = "lb_tournamentTeam";
+            lb_tournamentTeam.Size = new Size(365, 154);
+            lb_tournamentTeam.TabIndex = 17;
             // 
             // btn_deletePlayer
             // 
@@ -256,7 +259,7 @@
             BackColor = Color.White;
             ClientSize = new Size(774, 501);
             Controls.Add(lb_prize);
-            Controls.Add(lb_tournamentPlayers);
+            Controls.Add(lb_tournamentTeam);
             Controls.Add(btn_createTournament);
             Controls.Add(btn_addPrize);
             Controls.Add(btn_deletePrize);
@@ -297,7 +300,7 @@
         private Button btn_addTeam;
         private Button btn_addPrize;
         private Label label4;
-        private ListBox lb_tournamentPlayers;
+        private ListBox lb_tournamentTeam;
         private Button btn_deletePlayer;
         private Label label5;
         private Button btn_deletePrize;
