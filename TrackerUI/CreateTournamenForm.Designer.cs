@@ -196,8 +196,9 @@
             btn_deletePlayer.Name = "btn_deletePlayer";
             btn_deletePlayer.Size = new Size(365, 40);
             btn_deletePlayer.TabIndex = 16;
-            btn_deletePlayer.Text = "Eliminar Seleccionado";
+            btn_deletePlayer.Text = "Quitar Seleccionado";
             btn_deletePlayer.UseVisualStyleBackColor = false;
+            btn_deletePlayer.Click += btn_deletePlayer_Click;
             // 
             // label5
             // 
@@ -222,8 +223,9 @@
             btn_deletePrize.Name = "btn_deletePrize";
             btn_deletePrize.Size = new Size(365, 40);
             btn_deletePrize.TabIndex = 16;
-            btn_deletePrize.Text = "Eliminar Seleccionado";
+            btn_deletePrize.Text = "Quitar Seleccionado";
             btn_deletePrize.UseVisualStyleBackColor = false;
+            btn_deletePrize.Click += btn_deletePrize_Click;
             // 
             // lb_prize
             // 
@@ -251,6 +253,7 @@
             btn_createTournament.TabIndex = 16;
             btn_createTournament.Text = "Crear Torneo";
             btn_createTournament.UseVisualStyleBackColor = false;
+            btn_createTournament.Click += btn_createTournament_Click;
             // 
             // CreateTournamenForm
             // 

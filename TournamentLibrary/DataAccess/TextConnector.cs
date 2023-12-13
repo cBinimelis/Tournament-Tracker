@@ -69,6 +69,11 @@ namespace TournamentLibrary.DataAccess
             return model;
         }
 
+        public TournamentModel CreateTournament(TournamentModel model)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<PersonModel> GetPersons_All()
         {
             return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
@@ -76,7 +81,7 @@ namespace TournamentLibrary.DataAccess
 
         public List<TeamModel> GetTeams_All()
         {
-            throw new NotImplementedException();
+            return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
         }
     }
 }

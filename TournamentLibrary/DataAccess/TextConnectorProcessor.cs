@@ -101,6 +101,8 @@ namespace TournamentLibrary.DataAccess.TextHelpers
                 {
                     t.TeamMemebers.Add(person.Where(x => x.Id == int.Parse(id)).First());
                 }
+
+                output.Add(t);
             }
 
             return output;

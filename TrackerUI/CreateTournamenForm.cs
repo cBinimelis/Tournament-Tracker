@@ -79,5 +79,53 @@ namespace TrackerUI
             CreateTeamForm frm = new CreateTeamForm(this);
             frm.Show();
         }
+
+        private void btn_deletePlayer_Click(object sender, EventArgs e)
+        {
+            TeamModel t = (TeamModel)lb_tournamentTeam.SelectedItem;
+
+            if (t != null)
+            {
+                selectedTeams.Remove(t);
+                avaliableTeams.Add(t);
+
+                WireUpLists();
+            }
+        }
+
+        private void btn_deletePrize_Click(object sender, EventArgs e)
+        {
+            PrizeModel p = (PrizeModel)lb_prize.SelectedItem;
+
+            if (p != null)
+            {
+                selectedPrizes.Remove(p);
+
+                WireUpLists();
+            }
+        }
+
+        private void btn_createTournament_Click(object sender, EventArgs e)
+        {
+            //validar valor ingresado en la tarifa
+            decimal fee = 0;
+            bool acceptableFee = decimal.TryParse(tb_entryFee.Text, out fee);
+            if (!acceptableFee)
+            {
+                MessageBox.Show("Necesitas ingresar una tarifa valida.", "Tarifa Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Crear modelo de torneo
+            TournamentModel tm = new TournamentModel();
+
+            tm.TournamentName = tb_tournamentName.Text;
+            tm.EntryFee = decimal.Parse(tb_entryFee.Text);
+
+            tm.Prizes = selectedPrizes;
+            tm.EnteredTeams = selectedTeams;
+
+
+        }
     }
 }

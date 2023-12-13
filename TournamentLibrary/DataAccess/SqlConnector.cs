@@ -85,6 +85,31 @@ namespace TournamentLibrary.DataAccess
             }
         }
 
+        public TournamentModel CreateTournament(TournamentModel model)
+        {
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                //var t = new DynamicParameters();
+                //t.Add("@TeamName", model.TeamName);
+                //t.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                //conn.Execute("dbo.spTeams_Insert", t, commandType: CommandType.StoredProcedure);
+
+                //model.Id = t.Get<int>("@Id");
+
+                //foreach (PersonModel tm in model.TeamMemebers)
+                //{
+                //    t = new DynamicParameters();
+                //    t.Add("@TeamId", model.Id);
+                //    t.Add("@PersonId", tm.Id);
+
+                //    conn.Execute("dbo.spTeamMembers_Insert", t, commandType: CommandType.StoredProcedure);
+                //}
+
+                //return model;
+            }
+        }
+
         public List<PersonModel> GetPersons_All()
         {
             List<PersonModel> output;
