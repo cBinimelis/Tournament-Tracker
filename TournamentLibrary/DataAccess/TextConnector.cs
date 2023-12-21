@@ -70,7 +70,7 @@ namespace TournamentLibrary.DataAccess
             return model;
         }
 
-        public TournamentModel CreateTournament(TournamentModel model)
+        public void CreateTournament(TournamentModel model, string fi)
         {
             List<TournamentModel> tournaments = TournamentFile
                 .FullFilePath()
@@ -85,7 +85,7 @@ namespace TournamentLibrary.DataAccess
             }
             model.Id = currentId;
             tournaments.Add(model);
-            tournaments.SaveToTournamentFile();
+            tournaments.SaveToTournamentFile(TournamentFile);
         }
 
         public List<PersonModel> GetPersons_All()

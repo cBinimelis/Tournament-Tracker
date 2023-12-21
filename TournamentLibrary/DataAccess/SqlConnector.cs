@@ -85,15 +85,13 @@ namespace TournamentLibrary.DataAccess
             }
         }
 
-        public TournamentModel CreateTournament(TournamentModel model)
+        public void CreateTournament(TournamentModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 SaveTournament(model, connection);
                 SaveTournamentPrizes(model, connection);
                 SaveTournamentEntries(model, connection);
-
-                return model;
             }
         }
 

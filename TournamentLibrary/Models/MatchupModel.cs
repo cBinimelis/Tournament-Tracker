@@ -12,6 +12,10 @@ namespace TournamentLibrary.Models
     public class MatchupModel
     {
         /// <summary>
+        /// Unique identifier for the 1 
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// The set of teams that were involved in this match
         /// </summary>
         public List<MatchupEntryModel> Entries { get; set; } = new List<MatchupEntryModel>();
